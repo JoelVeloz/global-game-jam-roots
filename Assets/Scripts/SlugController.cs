@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SlugController : MonoBehaviour
 {
+    public bool controlEnabled = true;
     public int speed;
     private bool moveRight;
 
@@ -24,6 +25,8 @@ public class SlugController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (controlEnabled)
+        {
         if (moveRight)
         {
             transform.Translate(2 * Time.deltaTime * speed, 0, 0);
@@ -35,7 +38,19 @@ public class SlugController : MonoBehaviour
 
         if (transform.position.y < -30)
             Death();
-        
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log("Collision");
+        if(collision.CompareTag("Player"))
+        {
+            GetComponent<Collider2D>().isTrigger = true;
+            controlEnabled=false;
+            animator.SetBool("Death", true);
+            Invoke("Death",0.6f);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision){
@@ -48,21 +63,15 @@ public class SlugController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Death()
     {
-        if(collision.CompareTag("Player"))
-        {
-            animator.SetBool("Death", true);
-            GetComponent<Collider2D>().isTrigger = true;
-
-            float countdown = 0.5f;
-            countdown -= Time.deltaTime;
-            if(countdown > 0f)
-            {
-                rb.velocity = new Vector2(1f, 5f);
-            }
-        }
+            //animator.SetBool("Death", true);
+            Destroy(gameObject);
+            
+        
     }
+
+   
 
     private void Flip()
     {
@@ -72,8 +81,4 @@ public class SlugController : MonoBehaviour
         transform.localScale = ls;
     }
 
-    void Death()
-    {
-        Destroy(gameObject);
-    }
 }
