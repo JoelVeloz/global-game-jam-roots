@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class KoopaController : MonoBehaviour
-{
+{/*
     public int speed;
     private bool moveRight;
 
@@ -102,4 +102,4 @@ public class KoopaController : MonoBehaviour
     {
         Destroy(gameObject);
     }
-}
+*/}
