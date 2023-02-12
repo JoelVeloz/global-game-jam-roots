@@ -13,18 +13,19 @@ public class GeneracionTierra : MonoBehaviour
     public Texture2D noiseTexture;
     //public List<GameObject> worldtiles = new List<GameObject>;
     public GameObject Player;
-
+    public float IncioGeneracion;
     private void Start()
     {
         seed = UnityEngine.Random.Range(-10000, 10000);
         //seed = random.Range(-10000,10000);
         GenerateNoiseTexture();
-        GenerarTierra(-100);
+        GenerarTierra(IncioGeneracion);
+        /*
         if(Player.transform.position.y % -100 == 0){
             float inicio = Player.transform.position.y - 100f;
             GenerarTierra(inicio);
         }
-
+        */
     }
 
     public void GenerarTierra(float y){
@@ -38,7 +39,9 @@ public class GeneracionTierra : MonoBehaviour
                     GameObject newTile = new GameObject(name = "tile");
                     newTile.transform.parent = this.transform;
                     newTile.AddComponent<SpriteRenderer>();
+                    //newTile.AddComponent<BoxCollider2D>();
                     newTile.GetComponent<SpriteRenderer>().sprite = tile;
+                    //newTile.GetComponent<BoxCollider2D>() = tile;
                     newTile.transform.position = new Vector2(x+ 1f,i + 1f); 
                 }
             }
