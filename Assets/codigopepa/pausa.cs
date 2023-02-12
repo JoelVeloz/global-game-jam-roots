@@ -5,6 +5,9 @@ using UnityEngine;
 public class pausa : MonoBehaviour
 {
     // Start is called before the first frame update
+    public bool isPause = false;
+
+
     void Start()
     {
         
@@ -16,6 +19,14 @@ public class pausa : MonoBehaviour
         
     }
     public void MenuP(){
-        Time.timeScale = 0f;
+        if(isPause) {
+            isPause = !isPause;
+            Time.timeScale = 0f;
+        }else{
+              isPause = !isPause;
+ Time.timeScale = 1f;
+        }
+       
+
     }
 }

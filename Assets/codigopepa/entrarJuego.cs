@@ -16,12 +16,12 @@ public class entrarJuego : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)){
-            cambioEscena(nivel);
-        }
-        if (entrar){
-            cambioEscena(nivel);
-        }
+        // if (Input.GetKeyDown(KeyCode.Space)){
+        //     cambioEscena(nivel);
+        // }
+        // if (entrar){
+        //     cambioEscena(nivel);
+        // }
     }
     public void cambioEscena(int valor){
         SceneManager.LoadScene(valor);
