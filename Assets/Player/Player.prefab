@@ -174,7 +174,7 @@ MonoBehaviour:
   jumpStrength: 400
   ground:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   groundController: {fileID: 8647682441552193485}
   boxDimensions: {x: 1, y: 0.25, z: 0}
   onground: 0
